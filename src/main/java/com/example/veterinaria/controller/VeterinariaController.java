@@ -2,8 +2,10 @@ package com.example.veterinaria.controller;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,7 +55,7 @@ public class VeterinariaController {
 	}
 	
 	@PostMapping(value="/cliente/crear")
-	public void nuevoClinete(@RequestBody Clientes clientes) {
+	public void nuevoClinete(@Valid @RequestBody Clientes clientes) {
 		clienteService.crearCliente(clientes);
 	}
 	
@@ -80,6 +82,7 @@ public class VeterinariaController {
 	}
 	
 	@PostMapping(value="/mascota/crear")
+	@Validated
 	public void nuevoClinete(@RequestBody Mascotas mascotas) {
 		mascotaService.crearMascota(mascotas);
 	}

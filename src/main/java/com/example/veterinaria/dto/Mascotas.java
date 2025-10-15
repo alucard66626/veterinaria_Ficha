@@ -1,5 +1,7 @@
 package com.example.veterinaria.dto;
 
+import jakarta.validation.Valid;
+
 public class Mascotas {
 	
 	private int idMascota;
@@ -8,7 +10,8 @@ public class Mascotas {
 	private String raza;
 	private String fechaNacimiento;
 	private String sexo;
-	
+
+	@Valid
 	private Clientes cliente;
 	
 	

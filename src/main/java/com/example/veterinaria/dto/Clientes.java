@@ -1,14 +1,23 @@
 package com.example.veterinaria.dto;
 
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public class Clientes {
 
 	private int idCliente;
+	@NotNull
+	@Pattern(regexp = "[a-zA-Z]{30}")
 	private String nombre;
+	@NotNull
 	private String apellido;
+	@NotNull
 	private String telefono;
+	@Email
 	private String email;
+	@NotNull
 	private String direccion;
 	
 	
