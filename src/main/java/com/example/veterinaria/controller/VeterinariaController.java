@@ -2,6 +2,9 @@ package com.example.veterinaria.controller;
 
 import java.util.List;
 
+import com.example.veterinaria.annotations.CustomAnnotation;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.example.veterinaria.dto.Clientes;
 import com.example.veterinaria.dto.Consultas;
@@ -43,9 +47,10 @@ public class VeterinariaController {
 	public ConsultaService  consultaService;
 	
 //Cliente
-	
+
 	@GetMapping(value = "/cliente/listar")
-	public ResponseEntity <List<Clientes>> getClientes() {
+	public ResponseEntity <List<Clientes>> getClientes(HttpServletRequest request,
+													   HttpServletResponse response) {
 		 return ResponseEntity.ok(clienteService.getClientes());
 	}
 	
@@ -53,9 +58,11 @@ public class VeterinariaController {
 	public Clientes getClienteId(@PathVariable int id){
 		return clienteService.getClientesId(id);
 	}
-	
+
+	@CustomAnnotation
 	@PostMapping(value="/cliente/crear")
-	public void nuevoClinete(@Valid @RequestBody Clientes clientes) {
+	public void nuevoCliente(HttpServletRequest request,@RequestHeader("Authorization") String authorization,
+							 							@Valid @RequestBody Clientes clientes) {
 		clienteService.crearCliente(clientes);
 	}
 	
