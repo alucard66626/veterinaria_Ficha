@@ -67,7 +67,7 @@ public class VeterinariaController {
 		clienteService.eliminar(id);
 	}
 	
-	//Mascota test
+	//Mascota cambio para rfama dev
 	@GetMapping(value = "/mascota/listar")
 	public ResponseEntity <List<Mascotas>> getMascotas() {
 		 return ResponseEntity.ok(mascotaService.getMacotas());
