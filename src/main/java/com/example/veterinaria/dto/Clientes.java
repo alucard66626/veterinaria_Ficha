@@ -2,13 +2,21 @@ package com.example.veterinaria.dto;
 
 
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+
 public class Clientes {
 
 	private int idCliente;
+	@NotNull
 	private String nombre;
+	@NotNull
 	private String apellido;
+	@NotNull
 	private String telefono;
+	@Email
 	private String email;
+	@NotNull
 	private String direccion;
 	
 	

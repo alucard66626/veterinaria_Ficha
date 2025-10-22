@@ -22,6 +22,8 @@ import com.example.veterinaria.service.ConsultaService;
 import com.example.veterinaria.service.MascotaService;
 import com.example.veterinaria.service.VeterinarioService;
 
+import jakarta.validation.Valid;
+
 
 
 @RestController
@@ -53,7 +55,7 @@ public class VeterinariaController {
 	}
 	
 	@PostMapping(value="/cliente/crear")
-	public void nuevoClinete(@RequestBody Clientes clientes) {
+	public void nuevoClinete(@Valid @RequestBody Clientes clientes) {
 		clienteService.crearCliente(clientes);
 	}
 	
